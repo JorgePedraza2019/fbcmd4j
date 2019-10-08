@@ -1,6 +1,6 @@
 # fbc4j
 
-Facebook client for Java
+Facebook client for Java Actualizado
 
 1. Antes de compilar y ejecutar el programa se deberá descargar los archivos de la siguiente liga https://github.com/JorgePedraza2019/fbcmd4j.git
 
