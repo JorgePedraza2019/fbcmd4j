@@ -1,0 +1,5 @@
+debug=true
+oauth.appId=****************
+oauth.appSecret=********************************
+oauth.accessToken=********************************
+oauth.permissions=public_profile,email,user_age_range,user_birthday,user_friends,user_gender,user_hometown, user_likes,user_link, user_location,user_photos, user_status, user_tagged_places, user_videos
