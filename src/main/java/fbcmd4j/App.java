@@ -36,11 +36,11 @@ public class App {
         }
 
         System.out.println(" ");
-        System.out.println("Bienvenido: ");
+        System.out.println("Bienvenido: \n");
         
-        logger.error(me.getId());
-        logger.error(me.getName());
-        logger.error(me.getEmail());
+        logger.info(me.getId());
+        logger.info(me.getName());
+        logger.info(me.getEmail());
 
         int Pregunta;
 
@@ -53,94 +53,77 @@ public class App {
         System.out.println("(D) Hacer una publicación con un link en el muro.");
         System.out.println("(E) Salir");
         System.out.println("***********************************");
-        System.out.println(" ");
+        System.out.println(" ");     
 
-        do {
+            try {
+                do {
+                System.out.print("Ingresa la clave: ");
 
-            System.out.print("Ingresa la clave: ");
+                String s = sc.next();
+                char Opciones = s.charAt(0);
+    
+                String details = "";
+    
+                switch (Opciones) {
+    
+                    case 'A':               
+                    logger.debug(facebook.getHome());
+                    break;
+    
+                    case 'B':
+                    logger.debug(facebook.getFeed());
+                    break;
+                    
+                    case 'C':
+                    logger.debug(facebook.postStatusMessage("Hello World from Facebook4J."));
+                    break;
+    
+                    case 'D':              
+                    logger.debug(facebook.postLink(new URL("https://google.com")));
+                    break;
+                    
+                    case 'E':
+                    System.exit(0);    
+                    break;
+    
+                    default:
+                    details = "Valide su opcion. ";
+                    
+                    try {
+                        Thread.sleep(1000);
+                    }
+                    catch(InterruptedException ex) {
+                        Thread.currentThread().interrupt();
+                    }
+                    
+                    System.out.print(" ");
+                    System.out.print("Porfavor valide que su opción escrita sea la correcta");
+                    System.exit(0); 
+                    
+                    break;
+               
+                    }
+                    
+                    try {
+                        Thread.sleep(1000);
+                    }
+                    catch(InterruptedException ex) {
+                        Thread.currentThread().interrupt();
+                    }
+    
+                    Scanner entrada=new Scanner(System.in);
+                    System.out.println(" ");
+                    System.out.println("¿Desea escoger otra opcion? (1 para si, 2 para no): ");
+                    Pregunta=sc.nextInt();
+                    System.out.println(" ");
+                  
+                } while (Pregunta==1); {
+                    System.out.println("Fin del programa");
+                    System.exit(0); 
+                    }
 
-            String s = sc.next();
-            char Opciones = s.charAt(0);
-
-            String details = "";
-
-            switch (Opciones) {
-
-            case 'A':               
-                try {
-                    logger.error(facebook.getHome());
-                } catch (FacebookException e2) {
-                    // TODO Auto-generated catch block
-                    e2.printStackTrace();
-                }
-                break;
-
-            case 'B':
-                try {
-                    logger.error(facebook.getFeed());
-                } catch (FacebookException e3) {
-                    // TODO Auto-generated catch block
-                    e3.printStackTrace();
-                }
-                break;
-                
-            case 'C':
-                try {
-                    logger.error(facebook.postStatusMessage("Hello World from Facebook4J."));
-                } catch (FacebookException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-                break;
-
-            case 'D':
-                try {
-                    logger.error(facebook.postLink(new URL("https://google.com")));
-                } catch (MalformedURLException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (FacebookException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                break;
-                
-                case 'E':
-                System.exit(0);    
-                break;
-
-                default:
-                details = "Valide su opcion. ";
-                try {
-                    Thread.sleep(1000);
-                }
-                catch(InterruptedException ex) {
-                    Thread.currentThread().interrupt();
-                }
-                System.out.print(" ");
-                System.out.print("Porfavor valide que su opción escrita sea la correcta");
-                System.exit(0); 
-                break;
-           
-                }
-                
-                try {
-                    Thread.sleep(1000);
-                }
-                catch(InterruptedException ex) {
-                    Thread.currentThread().interrupt();
-                }
-
-                Scanner entrada=new Scanner(System.in);
-                System.out.println(" ");
-                System.out.println("¿Desea escoger otra opcion? (1 para si, 2 para no): ");
-                Pregunta=sc.nextInt();
-                System.out.println(" ");
-              
-                
-            } while (Pregunta==1); {
-                System.out.println("Fin del programa");
-                System.exit(0); 
-                } 
+            } catch (FacebookException | MalformedURLException e) {
+                System.out.println("\nNo tienes los permisos adecuados ");
+            }
     }
 }
